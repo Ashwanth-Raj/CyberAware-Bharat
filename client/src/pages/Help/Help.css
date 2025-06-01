@@ -1,0 +1,150 @@
+.help-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.help-content {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.help-content h3 {
+  margin: 30px 0 15px;
+  font-size: 1.75em; /* Increased from 1.4em */
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.help-content p {
+  margin: 15px 0;
+  line-height: 1.7;
+  font-size: 1.1em; /* Increased from default 1em */
+  color: #374151;
+}
+
+.help-content a {
+  color: #1E3A8A;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.help-content a:hover {
+  text-decoration: underline;
+  color: #1E40AF;
+}
+
+.help-content ul,
+.help-content ol {
+  font-size: 1.1em; /* Consistent with paragraph text */
+  line-height: 1.7;
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.help-content li {
+  margin: 8px 0;
+  color: #374151;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.screenshot-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screenshot-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.screenshot-caption {
+  margin-top: 12px;
+  font-size: 1em; /* Increased from 0.9em */
+  text-align: center;
+  color: #6B7280;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Additional improvements for readability */
+.help-content h2 {
+  font-size: 2em;
+  margin: 35px 0 20px;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.help-content h4 {
+  font-size: 1.3em;
+  margin: 25px 0 10px;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.help-content code {
+  background-color: #F3F4F6;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.95em;
+  color: #1F2937;
+}
+
+.help-content blockquote {
+  border-left: 4px solid #1E3A8A;
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  background-color: #F8FAFC;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .help-container {
+    padding: 15px;
+  }
+  
+  .help-content {
+    padding: 20px;
+  }
+  
+  .help-content h3 {
+    font-size: 1.5em;
+  }
+  
+  .help-content h2 {
+    font-size: 1.75em;
+  }
+  
+  .help-content p,
+  .help-content ul,
+  .help-content ol {
+    font-size: 1.05em;
+  }
+  
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .screenshot-caption {
+    font-size: 0.95em;
+  }
+}
