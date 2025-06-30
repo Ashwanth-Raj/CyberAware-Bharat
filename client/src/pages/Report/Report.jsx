@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { submitScam } from '../../services/api';
 import axios from 'axios';
-// import './Report.css';
+import './Report.css';
 
 function Report() {
   const { t } = useTranslation();
