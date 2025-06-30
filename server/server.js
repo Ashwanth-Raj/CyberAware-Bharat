@@ -15,7 +15,14 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173' }));
+//app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://cyber-aware-bharat.vercel.app/'
+  ],
+  credentials: true
+}));
 app.use(helmet());
 app.use(express.json());
 app.use(
