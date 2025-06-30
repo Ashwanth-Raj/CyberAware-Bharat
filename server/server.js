@@ -18,7 +18,7 @@ connectDB();
 //app.use(cors({ origin: 'http://localhost:5173' }));
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://cyber-aware-bharat.vercel.app/'
+  'https://cyber-aware-bharat-czspc1n80-ashwanths-projects-ed14e6e2.vercel.app'
 ];
 
 app.use(cors({
