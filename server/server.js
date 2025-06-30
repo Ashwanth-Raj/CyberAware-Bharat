@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -14,13 +13,16 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-//app.use(cors({ origin: 'http://localhost:5173' }));
+// Define allowed origins
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://cyber-aware-bharat-czspc1n80-ashwanths-projects-ed14e6e2.vercel.app'
+  'http://localhost:5173', // For local development
+  'https://cyber-aware-bharat.vercel.app', // Production URL
+  'https://cyber-aware-bharat-czspc1n80-ashwanths-projects-ed14e6e2.vercel.app', // Current preview URL
+  'https://cyber-aware-bharat-git-main-ashwanths-projects-ed14e6e2.vercel.app', // Previous preview URL
+  'https://cyber-aware-bharat-fq4th2nqb-ashwanths-projects-ed14e6e2.vercel.app' // Previous preview URL
 ];
 
+// CORS middleware
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -29,7 +31,8 @@ app.use(cors({
       callback(new Error('CORS Not Allowed for this Origin: ' + origin));
     }
   },
-  credentials: true
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'], // Allow all common methods
+  credentials: true // Allow cookies/auth headers
 }));
 
 app.use(helmet());
