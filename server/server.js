@@ -16,13 +16,22 @@ connectDB();
 
 // Middleware
 //app.use(cors({ origin: 'http://localhost:5173' }));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://cyber-aware-bharat.vercel.app/'
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://cyber-aware-bharat.vercel.app/'
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS Not Allowed for this Origin: ' + origin));
+    }
+  },
   credentials: true
 }));
+
 app.use(helmet());
 app.use(express.json());
 app.use(
