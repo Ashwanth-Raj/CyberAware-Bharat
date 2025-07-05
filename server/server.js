@@ -8,21 +8,19 @@ require('dotenv').config();
 const scamRoutes = require('./routes/scamRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+
 const app = express();
 
-// Connect to MongoDB
+//Connect to MongoDB
 connectDB();
 
-// Define allowed origins
+//Allowed Origins for CORS
 const allowedOrigins = [
-  'http://localhost:5173', // For local development
-  'https://cyber-aware-bharat.vercel.app', // Production URL
-  'https://cyber-aware-bharat-czspc1n80-ashwanths-projects-ed14e6e2.vercel.app', // Current preview URL
-  'https://cyber-aware-bharat-git-main-ashwanths-projects-ed14e6e2.vercel.app', // Previous preview URL
-  'https://cyber-aware-bharat-fq4th2nqb-ashwanths-projects-ed14e6e2.vercel.app' // Previous preview URL
+  'http://localhost:5173',
+  'https://cyber-aware-bharat.vercel.app'
 ];
 
-// CORS middleware
+// CORS Middleware
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -31,29 +29,28 @@ app.use(cors({
       callback(new Error('CORS Not Allowed for this Origin: ' + origin));
     }
   },
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'], // Allow all common methods
-  credentials: true // Allow cookies/auth headers
+  credentials: true
 }));
 
+//Security & Middleware
 app.use(helmet());
 app.use(express.json());
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit to 100 requests per window
-  })
-);
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit to 100 requests per window
+}));
 
-// Routes
+//API Routes
 app.use('/api/scams', scamRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
-// Error handling
+//Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Server error' });
 });
 
+//Server Listening
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
